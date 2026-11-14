@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LiquidityX demo cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Tokens copied from web/app/globals.css (light theme). */
+  :root {
+    --bg: oklch(0.992 0.0015 340);
+    --surface: oklch(0.975 0.003 340);
+    --line: oklch(0.905 0.005 340);
+    --ink: oklch(0.21 0.012 340);
+    --ink-2: oklch(0.41 0.012 340);
+    --ink-3: oklch(0.5 0.01 340);
+    --accent: oklch(0.47 0.165 340);
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased;
+    display: grid; place-items: center;
+  }
+  .card { display: none; width: 1040px; }
+  .card.on { display: block; }
+  .brand { display: flex; align-items: center; gap: 22px; }
+  .brand img { width: 76px; height: 76px; }
+  .brand h1 { font-size: 64px; font-weight: 600; letter-spacing: -0.025em; line-height: 1; }
+  .lead { margin-top: 26px; font-size: 26px; line-height: 1.4; color: var(--ink-2); max-width: 34ch; text-wrap: balance; }
+  .list { margin-top: 56px; border-top: 1px solid var(--line); padding: 0; list-style: none; }
+  .list li { display: grid; padding: 20px 0; border-bottom: 1px solid var(--line);
+    font-size: 25px; line-height: 1.35; color: var(--ink); opacity: 0; transition: opacity .35s cubic-bezier(.25,1,.5,1); }
+  .list li.show { opacity: 1; }
+  .list li span { color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .label { font-size: 17px; color: var(--ink-3); margin-top: 64px; }
+  /* role cards */
+  #role { text-align: left; width: 760px; }
+  #role .who { font-size: 56px; font-weight: 600; letter-spacing: -0.02em; }
+  #role .addr { margin-top: 18px; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 22px; color: var(--ink-2); }
+  #role .what { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 24px; color: var(--ink-2); }
+  #role .dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); margin-right: 16px; vertical-align: 6px; }
+</style>
+</head>
+<body>
+  <section class="card" id="intro">
+    <div class="brand"><img src="../../brand/liquidityx-mark-1024.png" alt=""><h1>LiquidityX</h1></div>
+    <p class="lead">Peer-to-peer, fixed-rate MUSD loans backed by native BTC, on Mezo.</p>
+    <ol class="list">
+      <li data-step="1">MUSD sits idle. There's no easy way to lend it at your own terms.</li>
+      <li data-step="2">Borrowers take a protocol-set rate, or nothing.</li>
+      <li data-step="3">Pooled lending hides who lends to whom, and on what terms.</li>
+    </ol>
+  </section>
+
+  <section class="card" id="role">
+    <p class="who"><i class="dot"></i><span id="role-who"></span></p>
+    <p class="addr" id="role-addr"></p>
+    <p class="what" id="role-what"></p>
+  </section>
+
+  <section class="card" id="outro">
+    <div class="brand"><img src="../../brand/liquidityx-mark-1024.png" alt=""><h1>LiquidityX</h1></div>
+    <p class="lead">Live on Mezo testnet. liquidityx-taupe.vercel.app</p>
+    <ol class="list">
+      <li data-step="1">Rate discovery from utilisation</li>
+      <li data-step="2">BTC to MUSD liquidation through a DEX</li>
+      <li data-step="3">Gasless signed offers and requests</li>
+    </ol>
+    <p class="label">Testnet only. AI-assisted security review; not independently audited.</p>
+  </section>
+<script>
+  const ROLES = {
+    lender: ["Lender wallet", "0x7099…79C8  (anvil account 1)", "Deposits MUSD and posts an offer"],
+    borrower: ["Borrower wallet", "0x3C44…93BC  (anvil account 2)", "Locks BTC and requests a loan"],
+    lender2: ["Lender wallet", "0x7099…79C8  (anvil account 1)", "Funds the open remainder directly"],
+    borrower2: ["Borrower wallet", "0x3C44…93BC  (anvil account 2)", "Repays and takes the BTC back"],
+    lender3: ["Lender wallet", "0x7099…79C8  (anvil account 1)", "Checks the vault"],
+  };
+  function show(name) {
+    document.querySelectorAll(".card").forEach((c) => c.classList.remove("on"));
+    if (name.startsWith("role-")) {
+      const r = ROLES[name.slice(5)];
+      document.getElementById("role-who").textContent = r[0];
+      document.getElementById("role-addr").textContent = r[1];
+      document.getElementById("role-what").textContent = r[2];
+      document.getElementById("role").classList.add("on");
+    } else {
+      document.getElementById(name).classList.add("on");
+    }
+  }
+  window.step = (n) => document.querySelectorAll(`.card.on [data-step="${n}"]`).forEach((e) => e.classList.add("show"));
+  show(location.hash.slice(1) || "intro");
+  window.addEventListener("hashchange", () => show(location.hash.slice(1)));
+</script>
+</body>
+</html>

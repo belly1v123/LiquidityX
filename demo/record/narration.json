@@ -1,0 +1,56 @@
+{
+  "voice": "en-US-AndrewNeural",
+  "rate": "+6%",
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "What LiquidityX is, and the problem",
+      "text": "LiquidityX is a peer-to-peer lending market for MUSD on Mezo. Today, MUSD often sits idle. Borrowers take whatever rate a protocol sets. And pooled lending hides who lends to whom."
+    },
+    {
+      "id": "lender",
+      "title": "Lender: deposit and post a funded offer",
+      "text": "A lender deposits 600 MUSD, then posts an offer: 500 at 6 percent, for 30 days. The deposit backs it, so it's always funded."
+    },
+    {
+      "id": "borrower",
+      "title": "Borrower: request backed by native BTC",
+      "text": "A borrower asks for 1,000 MUSD, at up to 8 percent, and locks 0.02 BTC. The form shows the collateral ratio and the liquidation price."
+    },
+    {
+      "id": "match",
+      "title": "Matching engine: partial fill, one offer excluded",
+      "text": "The matcher takes the cheapest offers first: 400 at 5 percent from another lender, then 500 at 6. That fills 900 of the 1,000. The 9 percent offer is left out, above the borrower's limit. Each fill opens its own loan."
+    },
+    {
+      "id": "fund",
+      "title": "Lender funds the rest at a rate they choose",
+      "text": "Our lender funds the last 100 directly, at a rate they pick: 7 percent."
+    },
+    {
+      "id": "loan",
+      "title": "Fixed-rate loan with live interest and liquidation protection",
+      "text": "Each loan has a fixed rate, and interest ticks up every second. Below 120 percent collateral, the lender can liquidate. On testnet, the price comes from Mezo's BTC oracle."
+    },
+    {
+      "id": "repay",
+      "title": "Repay in full and withdraw BTC",
+      "text": "The borrower repays in full, and takes the BTC back."
+    },
+    {
+      "id": "passport",
+      "title": "Mezo Passport wallet connect",
+      "text": "On Mezo, you connect with Mezo Passport: Bitcoin wallets through a Mezo smart account, or Ethereum wallets."
+    },
+    {
+      "id": "live",
+      "title": "Live on Mezo testnet",
+      "text": "LiquidityX is live on Mezo testnet. All seven contracts are verified, and every transaction links to the explorer. An AI-assisted security review found six issues, all fixed."
+    },
+    {
+      "id": "outro",
+      "title": "What's next",
+      "text": "Next: rate discovery, liquidation through a DEX, and gasless listings."
+    }
+  ]
+}

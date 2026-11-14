@@ -1,0 +1,20 @@
+{
+  "chainId": 31611,
+  "deployer": "0x13F4c476d246599D29c50c120379A6dEBD4D439b",
+  "startBlock": 16732827,
+  "contracts": {
+    "oracle": "0x2f73373a28130f03B4764eCa86666D4174B1139b",
+    "config": "0x10dAAB164EBd33b78A28b4Ef62F23Fdb77Abce79",
+    "vault": "0xF2cB14881C5df36BdcA8e5b97792C1626dD8E4D5",
+    "collateral": "0xc7DD5A0a6BEfc3a1Bd6FfDd71D067E6689032AC4",
+    "loans": "0x5fbf227AD58b9f746faF5eAc8939Eaa16A46F066",
+    "marketplace": "0xB142a575D1fb866faD96fBbE94804aa728285999",
+    "liquidation": "0x19ba45BC2D4013Cb098bd064A36B5ADbBe136665"
+  },
+  "assets": {
+    "MUSD": "0x118917a40FAF1CD7a13dB0Ef56C86De7973Ac503",
+    "mUSDC": "0xe1a26db653708A2AD8F824E92Db9852410e33A59"
+  },
+  "feed": "0x7b7c000000000000000000000000000000000015",
+  "txs": {}
+}
